@@ -19,8 +19,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "car")
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id")
     private Car car;
 
     public User() {
@@ -31,7 +31,11 @@ public class User {
         this.lastName = lastName;
         this.email = email;
     }
-    
+
+    public void addCar(Car car) {
+        car.setUser(this);
+    }
+
     public Long getId() {
         return id;
     }
@@ -70,5 +74,16 @@ public class User {
 
     public void setCar(Car car) {
         this.car = car;
+    }
+
+    @Override
+    public String toString() {
+        return "\nUser{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", car=" + car +
+                '}';
     }
 }

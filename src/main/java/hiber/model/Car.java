@@ -3,11 +3,11 @@ package hiber.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cars")
+@Table
 public class Car {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name = "name")
@@ -59,7 +59,12 @@ public class Car {
         this.user = user;
     }
 
+    @Override
     public String toString() {
-        return name + " " + series;
+        return "\nCar{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", series=" + series +
+                '}';
     }
 }
