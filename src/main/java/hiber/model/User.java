@@ -32,9 +32,6 @@ public class User {
         this.email = email;
     }
 
-    public void addCar(Car car) {
-        car.setUser(this);
-    }
 
     public Long getId() {
         return id;
